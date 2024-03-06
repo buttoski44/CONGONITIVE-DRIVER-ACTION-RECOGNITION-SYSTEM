@@ -14,11 +14,14 @@ function Model() {
             Upload Picture
           </Label>
           <span className="flex gap-8">
-            <Input id="picture" type="file" />
+            <Input
+              id="picture"
+              type="file"
+              className="space-x-2 file:border-0 file:bg-Lora hover:file:hover:bg-Dora file:px-2 file:py-[0.61rem] p-0 border-none file:rounded-r-md file:font-semibold file:text-sm file:text-white overflow-clip"
+            />
             <Button className="bg-Lora hover:bg-Dora font-libre">Submit</Button>
           </span>
         </div>
-
         <div className="bg-black rounded-2xl h-2/3"></div>
       </div>
       <div className="mx-auto w-1/2 h-full font-libre text-black text-center">

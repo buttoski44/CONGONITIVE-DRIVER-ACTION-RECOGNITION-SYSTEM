@@ -1,159 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import Block from "./block";
-import { Input } from "@/components/ui/input";
+import Indices from "./indices";
+import { twMerge } from "tailwind-merge";
 import { Button } from "@/components/ui/button";
-import { Search, ChevronsRight } from "lucide-react";
-import Indexes from "./indexes";
-
-const INDEX_LIST = [
-  {
-    Title: "Introduction",
-    List: [
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-    ],
-  },
-  {
-    Title: "Introduction",
-    List: [
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-    ],
-  },
-  {
-    Title: "Introduction",
-    List: [
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-    ],
-  },
-  {
-    Title: "Introduction",
-    List: [
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-    ],
-  },
-  {
-    Title: "Introduction",
-    List: [
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-      {
-        id: "background",
-        title: "background",
-      },
-    ],
-  },
-];
-
+import { ChevronsLeft } from "lucide-react";
 function Docs() {
+  const [showIndices, setShowIndices] = useState(true);
+  const toggle = () => {
+    setShowIndices((current) => !current);
+  };
   return (
     <div className="flex bg-black snap-center h-screen">
-      <div className="space-y-6 bg-black rounded-tr-xl w-3/4 h-full overflow-y-scroll relatie'">
-        <div className="absolute bg-gray-200/10 backdrop-blur-sm py-6 w-3/4 h-20">
-          <p className="px-20 2xl:px-40 font-extrabold font-libre text-3xl text-gray-200">
-            DOCUMENTATION
-          </p>
+      <div
+        className={twMerge(
+          "space-y-6 bg-black rounded-tr-xl h-full overflow-y-scroll relative",
+          showIndices && "w-3/4"
+        )}
+      >
+        {" "}
+        <div className="top-0 sticky flex flex-col items-end">
+          <div className="bg-gray-200/10 backdrop-blur-sm py-6 w-full h-20">
+            <p className="px-20 2xl:px-40 font-extrabold font-libre text-3xl text-gray-200">
+              DOCUMENTATION
+            </p>
+          </div>
+          <Button
+            className="bg-gray-200/10 hover:bg-gray-200/20 ml-full px-1 rounded-none rounded-bl-lg w-8"
+            onClick={toggle}
+          >
+            <ChevronsLeft
+              className={twMerge("text-gray-200", showIndices && "rotate-180")}
+            />
+          </Button>
         </div>
-        <div className="px-20 2xl:px-40 pt-20">
+        <div className="px-20 2xl:px-40">
           <Block id="block" />
         </div>
       </div>
-      <div className="text-right space-y-6 bg-gray-200 rounded-bl-2xl w-1/4 h-full text-black overflow-y-scroll ">
-        <div className="z-20 absolute flex justify-between bg-black/10 backdrop-blur-sm py-6 pr-6 pl-3 w-1/4 h-20">
-          <div className="flex justify-start items-center gap-4">
-            <div className="flex">
-              <Button className="bg-white hover:bg-white shadow-md px-2 rounded-r-none">
-                <Search className="text-gray-200" />
-              </Button>
-
-              <Input
-                type="text"
-                className="rounded-l-none focus-visible:ring-0 focus-visible:ring-offset-0 shadow-md placeholder:text-gray-300"
-                placeholder="Quick Search..."
-              />
-            </div>
-          </div>
-          <p className="font-extrabold font-libre text-3xl text-black">Index</p>
-        </div>
-        <div className="relative z-10 flex flex-col justify-end ">
-          <Button className="top-20 sticky bg-white hover:bg-black px-1 rounded-none w-8">
-            <ChevronsRight className="text-gray-200" />
-          </Button>
-          <ul className="px-6 2xl:px-20 pt-16 ">
-            {INDEX_LIST.map((index) => (
-              <Indexes index={index} />
-            ))}
-          </ul>
-        </div>
-      </div>
+      {showIndices && <Indices setShowIndices={setShowIndices} />}
     </div>
   );
 }
