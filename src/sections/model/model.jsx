@@ -6,7 +6,7 @@ function Model() {
   return (
     <div className="flex space-x-20 bg-gray-200 px-20 2xl:px-40 py-10 snap-center w-full h-screen">
       <div className="space-y-6 w-1/2 h-full">
-        <div className="space-y-8 w-full max-w-fit">
+        <form className="space-y-8 w-full max-w-fit">
           <Label
             htmlFor="picture"
             className="font-extrabold font-libre text-3xl text-black"
@@ -17,11 +17,12 @@ function Model() {
             <Input
               id="picture"
               type="file"
-              className="space-x-2 file:border-0 file:bg-Lora hover:file:hover:bg-Dora file:px-2 file:py-[0.61rem] p-0 border-none file:rounded-r-md file:font-semibold file:text-sm file:text-white overflow-clip"
+              className="space-x-2 file:border-0 file:bg-Lora hover:file:hover:bg-Dora file:mr-4 file:px-4 placeholder:px-2 file:py-[0.61rem] p-0 border-none file:font-semibold file:text-sm file:text-white overflow-clip"
+              accept=".png, .jpg, .jpeg, .jfif, .pjpeg, .pjp, .webp"
             />
             <Button className="bg-Lora hover:bg-Dora font-libre">Submit</Button>
           </span>
-        </div>
+        </form>
         <div className="bg-black rounded-2xl h-2/3"></div>
       </div>
       <div className="mx-auto w-1/2 h-full font-libre text-black text-center">
